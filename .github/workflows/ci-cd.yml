@@ -186,7 +186,7 @@ jobs:
         echo "Branch: ${{ github.ref_name }}" >> BUILD_INFO.txt
         
     - name: Create deployment artifact
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: jpsme-event-registration-${{ github.sha }}
         path: |

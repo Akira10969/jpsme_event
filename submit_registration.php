@@ -6,7 +6,7 @@ include 'security.php';
 include 'db.php';
 
 // Ensure database connection is available
-if (!isset($conn) || $conn->connect_error) {
+if ($conn->connect_error) {
     header("Location: 404.php");
     exit();
 }
