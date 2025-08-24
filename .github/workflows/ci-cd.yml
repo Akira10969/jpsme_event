@@ -227,6 +227,29 @@ jobs:
         # curl -f http://localhost/jpsme_event/404.php || exit 1
         echo "✅ Smoke tests passed!"
 
+  # Deploy to cPanel via FTP
+  deploy-ftp:
+    runs-on: ubuntu-latest
+    name: Deploy to cPanel via FTP
+    needs: [build]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to cPanel via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ${{ secrets.FTP_PATH }}
+        local-dir: ./
+        protocol: ftps
+        port: 21
+        dangerous-clean-slate: false
+
   # Production deployment (manual approval required)
   deploy-production:
     runs-on: ubuntu-latest
