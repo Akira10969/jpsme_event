@@ -39,6 +39,63 @@ Since you're using XAMPP locally, here's the **quickest way** to get your CI/CD 
 3. Go to your repository's **Actions** tab
 4. Watch the workflow run!
 
+## 🔍 How to Know If It's Working
+
+### Step 1: Check GitHub Actions Tab
+1. Go to: `https://github.com/Akira10969/jpsme_event/actions`
+2. You should see workflow runs with these statuses:
+   - 🟡 **Yellow dot** = Running
+   - ✅ **Green checkmark** = Success  
+   - ❌ **Red X** = Failed
+
+### Step 2: Click on a Workflow Run
+- Click on any workflow run to see details
+- You'll see jobs like:
+  - ✅ `Code Quality Check`
+  - ✅ `Database Schema Test`  
+  - ✅ `Security Vulnerability Scan`
+  - ✅ `Build Application`
+
+### Step 3: Check Individual Jobs
+Click on each job to see:
+- ✅ **Green checkmarks** = Steps passed
+- ❌ **Red X** = Steps failed
+- 📋 **Logs** = Detailed output
+
+### Step 4: Success Indicators
+**✅ Everything Working:**
+```
+✅ CI/CD Pipeline - JPSME Event Registration
+  ✅ Code Quality Check (2m 30s)
+  ✅ Database Schema Test (1m 45s)  
+  ✅ Security Vulnerability Scan (3m 10s)
+  ✅ Build Application (1m 20s)
+```
+
+**❌ Something Wrong:**
+```
+❌ CI/CD Pipeline - JPSME Event Registration
+  ❌ Code Quality Check (0m 45s) - Failed
+  ⚠️ Database Schema Test - Skipped
+  ⚠️ Security Vulnerability Scan - Skipped
+  ⚠️ Build Application - Skipped
+```
+
+### Step 5: Common Success Messages
+Look for these in the logs:
+- ✅ `"PHP syntax check passed!"`
+- ✅ `"Database connection: SUCCESS"`
+- ✅ `"Database schema imported successfully!"`
+- ✅ `"Build completed successfully"`
+
+### Step 6: If Something Fails
+- Click on the ❌ failed job
+- Read the error message in red
+- Common issues:
+  - Missing GitHub secrets
+  - Database connection errors
+  - PHP syntax errors
+
 ---
 
 ## 🚨 Skip These for Now (Advanced Setup Later)
