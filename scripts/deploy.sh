@@ -44,13 +44,13 @@ fi
 # Set environment-specific variables
 case $ENVIRONMENT in
     "staging")
-        SERVER_HOST=${STAGING_HOST:-"staging.example.com"}
+        SERVER_HOST=${STAGING_HOST:-"localhost"}
         SERVER_USER=${STAGING_USER:-"www-data"}
-        DEPLOY_PATH=${STAGING_PATH:-"/var/www/staging"}
+        DEPLOY_PATH=${STAGING_PATH:-"/xampp/htdocs/jpsme_event"}
         DB_NAME=${STAGING_DB_NAME:-"jpsme_event_staging"}
         ;;
     "production")
-        SERVER_HOST=${PRODUCTION_HOST:-"production.example.com"}
+        SERVER_HOST=${PRODUCTION_HOST:-"junior.psmeinc.org.ph"}
         SERVER_USER=${PRODUCTION_USER:-"www-data"}
         DEPLOY_PATH=${PRODUCTION_PATH:-"/var/www/html"}
         DB_NAME=${PRODUCTION_DB_NAME:-"jpsme_event"}
