@@ -52,9 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $conn->prepare("INSERT INTO registrations (competition_type, university, proof_natcon, team_members, proof_enrollment, coach_name, prc_license, prc_reg_date, prc_exp_date, proof_payment, payment_reference) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("sssssssssss", $competition_type, $university, $proof_natcon, $team_members, $proof_enrollment, $coach_name, $prc_license, $prc_reg_date, $prc_exp_date, $proof_payment, $payment_reference);
     if ($stmt->execute()) {
-        echo "Registration successful!";
+        header("Location: success.php");
+        exit();
     } else {
-        echo "Error: " . $stmt->error;
+        header("Location: 404.php");
+        exit();
     }
     $stmt->close();
 }

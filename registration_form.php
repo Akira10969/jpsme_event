@@ -9,8 +9,10 @@ function render_registration_form($competition_type) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/style.css">
+        <link rel="icon" type="image/x-icon" href="fav/favicon.ico">
+        <link rel="shortcut icon" href="fav/favicon.ico">
         <script src="https://unpkg.com/feather-icons"></script>
-        <title><?php echo htmlspecialchars($competition_type); ?> Registration</title>
+        <title><?php echo htmlspecialchars($competition_type); ?> Registration | JPSME Event</title>
     </head>
     <body>
     <div class="container">
