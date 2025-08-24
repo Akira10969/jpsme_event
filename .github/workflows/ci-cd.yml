@@ -204,8 +204,8 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: staging
-      url: https://your-staging-server.com
-    
+      url: http://localhost/jpsme_event
+
     steps:
     - name: Download build artifact
       uses: actions/download-artifact@v4
