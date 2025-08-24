@@ -160,9 +160,10 @@ jobs:
         echo "🌐 Testing page accessibility..."
         
         pages=(
-            "machine_design_registration.php"
-            "quizbee_registration.php"
-            "404.php"
+          "index.php"
+          "machine_design_registration.php"
+          "quizbee_registration.php"
+          "404.php"
         )
         
         for page in "${pages[@]}"; do

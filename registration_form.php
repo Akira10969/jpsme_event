@@ -2,7 +2,7 @@
 // registration_form.php
 
 // Include security configurations
-include 'security.php';
+include_once 'security.php';
 include 'db.php';
 
 function render_registration_form($competition_type, $competition_title) {

@@ -3,7 +3,7 @@
 
 // Include security configurations
 $conn = null;
-include 'security.php';
+include_once 'security.php';
 include 'db.php';
 
 // Ensure database connection is available
