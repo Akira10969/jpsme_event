@@ -224,7 +224,7 @@ jobs:
       run: |
         echo "🧪 Running smoke tests..."
         # Add basic connectivity/health checks
-        # curl -f https://your-staging-server.com/index.php || exit 1
+        # curl -f http://localhost/jpsme_event/404.php || exit 1
         echo "✅ Smoke tests passed!"
 
   # Production deployment (manual approval required)
@@ -235,7 +235,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     environment:
       name: production
-      url: https://your-production-server.com
+      url: https://junior.psmeinc.org.ph
     
     steps:
     - name: Download build artifact
