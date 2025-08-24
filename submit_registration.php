@@ -2,6 +2,7 @@
 // submit_registration.php
 
 // Include security configurations
+$conn = null;
 include 'security.php';
 include 'db.php';
 
