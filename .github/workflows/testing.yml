@@ -152,7 +152,7 @@ jobs:
         
     - name: Start PHP built-in server
       run: |
-        php -S localhost:80 &
+        php -S localhost:8080 &
         sleep 3
         
     - name: Test page accessibility
@@ -168,7 +168,7 @@ jobs:
         
         for page in "${pages[@]}"; do
           echo "Testing $page..."
-          response=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost/$page")
+          response=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:8080/$page")
           if [ "$response" == "200" ]; then
             echo "✅ $page: OK"
           else
@@ -181,7 +181,7 @@ jobs:
       run: |
         echo "📝 Testing form rendering..."
         # Test Machine Design form
-        content=$(curl -s "http://localhost/machine_design_registration.php")
+        content=$(curl -s "http://localhost:8080/machine_design_registration.php")
         if echo "$content" | grep -q "Machine Design Registration"; then
           echo "✅ Machine Design form renders correctly"
         else
@@ -189,7 +189,7 @@ jobs:
           exit 1
         fi
         # Test Quizbee form
-        content=$(curl -s "http://localhost/quizbee_registration.php")
+        content=$(curl -s "http://localhost:8080/quizbee_registration.php")
         if echo "$content" | grep -q "Quizbee Registration"; then
           echo "✅ Quizbee form renders correctly"
         else
@@ -201,7 +201,7 @@ jobs:
       run: |
         echo "🎨 Testing CSS and assets..."
         # Test CSS file
-        response=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost/assets/style.css")
+        response=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:8080/assets/style.css")
         if [ "$response" == "200" ]; then
           echo "✅ CSS file accessible"
         else
@@ -209,7 +209,7 @@ jobs:
           exit 1
         fi
         # Test favicon
-        response=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost/fav/favicon.ico")
+        response=$(curl -s -o /dev/null -w "%{http_code}" "http://localhost:8080/fav/favicon.ico")
         if [ "$response" == "200" ]; then
           echo "✅ Favicon accessible"
         else
@@ -239,7 +239,7 @@ jobs:
         
     - name: Start PHP server
       run: |
-        php -S localhost:80 &
+        php -S localhost:8080 &
         sleep 3
         
     - name: Run load tests
@@ -247,7 +247,7 @@ jobs:
         echo "⚡ Running performance tests..."
         # Test main page load time
         echo "Testing index.php load time..."
-        ab -n 100 -c 5 http://localhost/index.php
+        ab -n 100 -c 5 http://localhost:8080/index.php
         echo "Testing registration form load time..."
-        ab -n 50 -c 3 http://localhost/machine_design_registration.php
+        ab -n 50 -c 3 http://localhost:8080/machine_design_registration.php
         echo "✅ Performance tests completed!"
