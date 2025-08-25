@@ -239,7 +239,7 @@ jobs:
       uses: actions/checkout@v4
       
     - name: Deploy to cPanel via FTP
-      uses: SamKirkland/ftp-deploy-action@v4
+      uses: SamKirkland/FTP-Deploy-Action@v4
       with:
         server: ${{ secrets.FTP_HOST }}
         username: ${{ secrets.FTP_USERNAME }}
